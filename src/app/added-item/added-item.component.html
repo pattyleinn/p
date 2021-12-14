@@ -1,0 +1,52 @@
+<div style="width: 100%;" class="w-full m-t-20 p-t-20 flex flex-col items-center justify-start">
+<div class="w-full flex flex-row items-center justify-center" >
+    <h2 class="color: hsl(217, 96%, 64%)" >
+        {{item.name}}
+    </h2>
+</div>
+<div style="width: 100%;" class="w-full flex flex-row items-center justify-center">
+    <div *ngIf="error_occured" class="error-box">
+        An error occured
+    </div>
+    <div *ngIf="success" class="success-box">
+        Success
+    </div>
+</div>
+<div style="width: 80%;" class="w-full flex flex-row flex-wrap items-center m-b-2- justify-between" >
+    <div style="width: 40%;" class="w-half flex flex-col h-full items-start justify-start p-l-20" >
+        <div className="w-full flex flex-col items-start justify-start" >
+            <h3 class="color: hsl(217, 96%, 64%)" >
+                Description:
+            </h3>
+            <p class="regular" >
+                {{item.description}}
+            </p>
+        </div>
+        <div className="w-full flex flex-col items-start justify-start" >
+            <h3 class="color: hsl(217, 96%, 64%)" >
+                State:
+            </h3>
+            <p class="regular" >
+                {{item.state}}
+            </p>
+        </div>
+        <div className="w-full flex flex-col items-start justify-start" >
+            <h3 class="color: hsl(217, 96%, 64%)" >
+                Tags:
+            </h3>
+            <div *ngFor="let tag of item.tags" class="w-full flex flex-row flex-wrap" >
+                <p class="regular" >
+                    {{tag}}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div style="width: 40%;" class="w-half flex flex-col h-full items-center justify-center p-r-20" >
+        <img width="300" height="200" [src]="item.img" alt="laptop" srcset="">
+    </div>
+</div>
+    <div style="width: 80%" class="w-full flex-wrap m-t-20 flex flex-row items-center justify-center" >
+        <button (click)="post_data()" class="submit-button" >Confirm</button>
+        <button (click)="back()" class="primary-button" >Back</button>
+    </div>
+</div>

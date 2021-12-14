@@ -1,0 +1,30 @@
+.basic-input{
+    height: 30px;
+    border: 1px solid #eaebed;
+    outline: black;
+}
+.basic-textarea{
+    border: 1px solid #eaebed;
+}
+
+.basic-input:focus{
+    border: 2px solid #4d91fb;
+}
+.basic-textarea:focus-within{
+    border: 2px solid #4d91fb;
+}
+
+.sub-button {
+    width: 50%;
+    height: 40px;
+    border: 2px solid #4d91fb;
+    color: #4d91fb;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 20px;
+}
+.sub-button:active{
+    background-color: #4d91fb;
+    color: white;
+
+}

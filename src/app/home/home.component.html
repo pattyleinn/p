@@ -1,0 +1,50 @@
+<div style="width: 100%;" class="w-full pt-20 h-full flex flex-col items-center justify-center " >
+    <div style="width: 80%;" class="w-full pt-20 h-full flex flex-col items-center justify-center " >
+   <div class="w-full items-center justify-center m-t-20 m-b-20 flex flex-row" >
+       <h1 style="color: #4d91fb" >
+        Inventory
+        </h1>
+   </div>
+   <div class="w-full items-center justify-center m-t-20 m-b-20 flex flex-row" >
+       <button (click)="add_item()" class="primary-button" >
+           Add Item
+       </button>
+   </div>
+   <div class="w-full items-center justify-center m-t-20 m-b-20 flex flex-row" >
+        <div *ngIf="fetching"  class ="success-box">
+            Fetching data
+        </div>
+    </div>
+    <div style="width: 100%;" class="flex flex-col items-center justify-start" >
+    <tr class="w-full row " >
+        <th class="col" >
+            id
+        </th>
+        <th class="col" >
+            Name
+        </th>
+        <th class="col" >
+            State
+        </th>
+        <th class="col" >
+            Category
+        </th>
+        <th class="col" >
+            Date
+        </th>
+        
+    </tr>
+        <table style="width: 100%;" class="w-full" *ngFor="let item of items" >
+            
+        <tr (click)="navigate_to_item(item['id'])" class="row" >
+            <td class="col" >{{item['id']}}</td>
+            <td class="col" >{{item['item-name']}}</td>
+            <td class="col" >{{item['item-state']}}</td>
+            <td class="col" >{{item['item-category']}}</td>
+            <td class="col" >{{item['item-date']}}</td>
+        </tr>
+            
+        </table>
+    </div>
+</div>
+</div>

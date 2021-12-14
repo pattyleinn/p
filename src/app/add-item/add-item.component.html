@@ -1,0 +1,64 @@
+<div class="w-full m-t-20 p-b-20 h-full flex items-center justify-start flex-col" >
+    <div class="w-full m-t-20 p-t-10 m-b-20 p-b-10 flex flex-row items-center justify-center " >
+        <h1 style="color: hsl(217, 96%, 64%)" >
+            Add New Item 
+        </h1>
+    </div>
+    <form (onsubmit)="submit"   style="width: 80%;" className="m-t-20 p-t-10 flex flex-col items-center justify-start" >
+        <div style="width: 100%" class="flex m-t-10 flex-col items-start justify-start"> 
+            <label class="fnt-16 p-b-10 fnt-roboto" for="name">*Name</label>
+            <Input   type="text"  style="width: 100%;" name="name" [(ngModel)]="newItem.name"      placeholder="Name" id="name" class=" {{submit_error && newItem.name.length == 0  ? 'input-submit-error' : 'basic-input'}}  fnt-roboto semi-bold" ngDefaultControl />
+            <p *ngIf="submit_error && newItem.name.length == 0" class="error" >{{error_codes[0]}}</p>
+        </div>
+        <div style="width: 100%" class=" flex m-t-10 flex-col items-start justify-start">
+            <label class="fnt-16 p-b-10 fnt-roboto" for="img">*ImageURL</label>
+            <Input type="text" name="img" [(ngModel)]="newItem.img"  style="width: 100%;"  id="img" placeholder="ImageURL" class=" {{submit_error && newItem.img.length == 0  ? 'input-submit-error' : 'basic-input'}}  fnt-roboto semi-bold" ngDefaultControl />
+            <p *ngIf="submit_error && newItem.img.length == 0" class="error" >{{error_codes[0]}}</p>
+        </div>
+        <div style="width: 100%" class=" flex m-t-10 flex-col items-start justify-start">
+            <label class="fnt-16 p-b-10 fnt-roboto" for="categories">*Category</label>
+            
+            <select  class="w-full  {{submit_error && newItem.category.length == 0  ? 'input-submit-error' : 'basic-input'}} " id="categories" name="categories" name="category" [(ngModel)]="newItem.category" ngDefaultControl >
+                <option value="Monitor" >Monitor</option>
+                <option value="CPU">CPU</option>
+                <option value="UPS">UPS</option>
+                <option value="Laptop">Laptop</option>
+                <option value="Keyboard">Keyboard</option>
+                <option value="Mouse">Mouse</option>
+            </select>
+            <p *ngIf="submit_error && newItem.category.length == 0" class="error" >{{error_codes[2]}}</p>
+        </div>
+        <div style="width: 100%" class=" flex m-t-10 flex-col items-start justify-start">
+            <label class="fnt-16 p-b-10 fnt-roboto" for="Title">*Description</label>
+            <textarea   rows="5" class="{{submit_error && newItem.name.length == 0  ? 'input-submit-error' : 'basic-textarea'}}" cols="80" name="description" [(ngModel)]="newItem.description" ngDefaultControl ></textarea>
+            <p *ngIf="submit_error && newItem.description.length == 0" class="error" >{{error_codes[0]}}</p>
+        </div>
+        <div style="width: 100%" class=" flex m-t-10 flex-col items-start justify-start">
+            <p class="fnt-16 p-b-10 fnt-roboto" for="Title">What is the state of the Item?</p>
+            <div *ngFor="let option of state" class="w-full flex flex-col items-center justify-start" >
+                <div class="w-full flex flex-row items-center justify-start" >
+                    <input (click)="set_item_state(option)" id="{{option}}" name="state" type="radio" [value]="option" [attr.checked]="newItem.state == option ? true : null" />
+                    <label  class="m-l-10" for="{{option}}">{{option}}</label>
+                </div>
+            </div>
+            <p *ngIf="submit_error && newItem.state.length == 0" class="error" >{{error_codes[2]}}</p>
+        </div>
+        <div class="w-full flex flex-col items-start justify-start" >
+            <p class="fnt-16 p-b-10 fnt-roboto" for="Title">Add tags to your item</p>
+            <div *ngFor="let tag of tags" style="width: 100%;" class="w-full m-t-10 p-l-20 flex flex-row flex-wrap" >
+                <div class="w-quater flex flex-row items-center justify-start" >
+                    <input id="{{tag}}" (click)="tag_action(tag)" name="tags" type="checkbox" [value]="tag" [attr.checked]="newItem.tags.indexOf(tag) !== -1? true : null" />
+                    <label  class="m-l-10" for="{{tag}}">{{tag}}</label>
+                </div>
+            </div> 
+            <p *ngIf="submit_error && newItem.tags.length == 0" class="error" >{{error_codes[1]}}</p>
+        </div>
+        
+        <div class="w-full flex fnt-20 m-t-20 items-center justify-center flex-row" >
+            <button (click)="submit()"  class="sub-button" type="submit">
+                Done
+            </button>
+        </div>
+        
+    </form>
+</div>
